@@ -1,0 +1,76 @@
+{% extends "_base.html" %}
+{% block title %}blog FREnchOnline{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css') }}">
+{% endblock %}
+{% block content %}
+    <div class="callout large primary">
+      <div class="row column text-center">
+        <h1>Our Blog</h1>
+      </div>
+    </div>
+    
+    <div class="row" id="content">
+      <div class="medium-8 columns">
+        {% for post in posts %}
+        <div class="blog-post">
+          <h3>{{ post.title }}<small>{{ post.date }}</small></h3>
+          <img class="thumbnail" src="../static/img/{{ post.cover_path }}">
+          <p>{{ post.body }}</p>
+          <div class="callout">
+            <ul class="menu simple subpost">
+              <li><a href="#">نویسنده: {{ post.author }}</a></li>
+              <li><a href="#">نظرات: 3</a></li>
+              <li><a href="">تعداد بازدیدها: {{ post.views }}</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        {% endfor %}
+
+      </div>
+      <div class="medium-3 columns" data-sticky-container>
+        <div class="sticky" data-sticky data-anchor="content">
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="#">Skyler</a></li>
+            <li><a href="#">Jesse</a></li>
+            <li><a href="#">Mike</a></li>
+            <li><a href="#">Holly</a></li>
+          </ul>
+
+          <h4>Authors</h4>
+          <ul>
+            <li><a href="#">Skyler</a></li>
+            <li><a href="#">Jesse</a></li>
+            <li><a href="#">Mike</a></li>
+            <li><a href="#">Holly</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row column">
+      <ul class="pagination" role="navigation" aria-label="Pagination">
+        <li class="disabled">Previous</li>
+        {% for number in range(0, numbers)%}
+        <li><a href="http://127.0.0.1:5000/blog/page/{{ number+1 }}" aria-label="Page {{ number+1 }}">{{ number+1 }}</a></li>
+        {% endfor %}
+<!--         <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
+        <li><a href="#" aria-label="Page 2">2</a></li>
+        <li><a href="#" aria-label="Page 3">3</a></li>
+        <li><a href="#" aria-label="Page 4">4</a></li>
+        <li class="ellipsis"></li>
+        <li><a href="#" aria-label="Page 12">12</a></li>
+        <li><a href="#" aria-label="Page 13">13</a></li> -->
+        <li><a href="#" aria-label="Next page">Next</a></li>
+      </ul>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+{% endblock %}

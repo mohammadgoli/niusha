@@ -1,0 +1,209 @@
+html, body {
+	height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+}
+
+
+* {
+	outline: None;
+}
+/*GENERAL CLASSES AND THINGS*/
+.wrap {
+	width: 90%;
+	max-width: 1800px;
+	margin: 0 auto;
+}
+
+
+/*DESKTOP NAVIGATION*/
+.nav-desktop {
+	background: #222;
+	height: 60px;
+	padding: 0;
+	width: 100%;
+}
+
+.title-bar {
+	background: #222;
+	padding: 0;
+	height: 60px;
+}
+
+.title-bar .title-bar-right, .title-bar .title-bar-left {
+     padding-top: 17px;
+     background: #222;
+    } 
+
+.off-canvas.is-open {
+	background: teal;
+}
+
+.MobileMenu{
+	padding-top: 17em;
+}
+
+.nav-desktop .menu-desktop {
+	background-color: transparent;
+	line-height: 60px;
+}
+
+.nav-desktop .menu-desktop li a{
+	display: inline-block;
+
+}
+
+.nav-desktop .menu-text {
+	line-height: 60px;
+	padding: 0;
+	color: white;
+}
+
+.menu > li > a {
+	line-height: 60px;
+	padding-top: 0;
+	padding-bottom: 0;
+	color: white;
+}
+
+.menu > li > a:hover{
+	background-color: rgba(255, 255, 255, 0.5);
+}
+/*.top-bar {
+	background-color: white;
+}*/
+
+/*آHERO SECTION*/
+.hero {
+	background-color: gray;
+	height: auto;
+	text-align: center;
+	padding-bottom: 4em;
+}
+
+.hero-top {
+	background-color: gray;
+	padding-top: 0;
+	
+}
+
+/*.hero-bottom {
+	background-color: green;
+	height: 20%;
+}
+*/
+
+
+/*SECTION 2 -- SLIDER STYLE*/
+.information-slider {
+	height: auto;
+	padding-top: 4em;
+}
+
+.informatino-slider-top{
+	height: 50%;
+}
+
+.information-slider-bottom{
+	height: 50%;
+}
+
+
+/*SECTION 3 -- COMMENTS*/
+.comments {
+	height: auto;
+	background: yellow;
+	padding-top: 4em;
+	padding-bottom: 4em;
+}
+
+.comments-bottom {
+	text-align: center;
+	padding-top: 3em;
+}
+
+/*SECTION 4 -- FAQ!*/
+.faq{
+	background:	wheat;
+	padding-top: 4em;
+	padding-bottom: 4em;
+}
+
+
+/*SECTION 5 -- REGISTER*/
+.register{
+	height: auto;
+	padding-top: 4em;
+	padding-bottom: 4em;
+	text-align: center;
+}
+
+/*SECTION 6 -- BLOG */
+.blog{
+	background: gray;
+}
+
+/*FOORTER*/
+footer {
+	background: gray;
+	height:auto;
+	padding-top: 3em;
+	padding-bottom: 3em;
+}
+
+footer a {
+	display: block;
+}
+
+
+/*COUNTDOWN-TIMER STYLES*/
+#clockdiv{
+	font-family: sans-serif;
+	color: #fff;
+	display: inline-block;
+	font-weight: 100;
+	text-align: center;
+	font-size: 30px;
+}
+
+#clockdiv > div{
+	padding: 10px;
+	border-radius: 3px;
+	background: #00BF96;
+	display: inline-block;
+}
+
+#clockdiv div > span{
+	padding: 15px;
+	border-radius: 3px;
+	background: #00816A;
+	display: inline-block;
+}
+
+.smalltext{
+	padding-top: 5px;
+	font-size: 16px;
+}
+
+
+/*MWDIA QUERY*/
+
+@media (max-width: 639px) {
+	.nav-desktop{
+		display: none;
+	}
+}
+
+.video {
+
+	max-width: 1100px;
+}
+
+iframe {
+	border: 0;
+}
+
+

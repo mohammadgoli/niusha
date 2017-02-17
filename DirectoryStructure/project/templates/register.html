@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta lang="fa">
+    <meta charset="utf-8">
+	<title>ثبت‌نام در کلاس‌های فرنچ‌آنلاین</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/css/newRegister.css' )}}">
+	<link href='http://www.fontonline.ir/css/BYekan.css' rel='stylesheet' type='text/css'>
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='img/17.png')}}">
+	<script src="{{ url_for('static', filename='master/sweetalert-master/dist/sweetalert.min.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='master/sweetalert-master/dist/sweetalert.css') }}">
+	<meta property="og:title" content="آموزش مکالمه فرانسه تنها در ۷۲ جلسه!"/>
+	<!-- <meta property="og:image" content="{{ url_for('static', filename='img/17.png')}}"/> -->
+	<meta property="og:url" content="http://french-online.org"/>
+	<meta property="og:site_name" content="French Online"/>
+	<meta property="og:description" content="اولین و بزرگترین برگزار کننده دوره‌های مجازی زبان فرانسه"/>
+</head>
+<body dir="rtl">
+					{% with messages = get_flashed_messages() %}
+	                   {% if messages %}
+	                       {% for message in messages %}
+	                           <script>
+	                            swal("caution", "{{ message }}", 'error')
+	                           </script>
+	                       {% endfor %}
+	                   {% endif %}
+	                {% endwith %}
+
+
+<!-- multistep form -->
+<form role="form" dir="rtl" method="POST" action="{{ url_for('registeration.register') }}" id="msform">
+{{ form.csrf_token }}
+	<!-- progressbar -->
+	<ul id="progressbar">
+		<li class="active">ذخیره کردن شماره</li>
+		<li>شرایط و ضوابط</li>
+		<li>ورود اطلاعات و پرداخت</li>
+	</ul>
+	<!-- fieldsets -->
+	<fieldset>
+		<h2 class="fs-title">ذخیره شماره تلفن</h2>
+		<h3 class="fs-subtitle">لطفا شماره تلفن زیر را ذخیره کنید.</h3>
+		<p>لطفا شماره تلفن <i dir="ltr">+989362970162</i> را به مخاطبان خود اضافه کنید تا بتوانیم برای شما پیام ارسال کنیم و شما را به طور خودکار به کانال کلاس مربوطه اضافه نماییم.<br /> در صورتی که شماره ما را قبلا ذخیره نموده‌اید نیاز به انجام این مرحله ندارید.</p>
+		<input type="button" name="next" class="next action-button" value="مرحله بعد" />
+	</fieldset>
+	<fieldset>
+		<h2 class="fs-title">شرایط و ضوابط</h2>
+		<h3 class="fs-subtitle">{{ form.license(class="license") }}شرایط و ضوابط را مطالعه کردم و قبول دارم.</h3>
+		<div id="licenseTextWrapper">
+		<p class="licenseText">به نام خدا<br />
+		<ol id="itemUL">
+		<li class="item">هزینه ثبت نام در صفحه مربوط به ثبت نام مشخص شده است.</li><li class="item">هزینه نمایش داده شده، هزینه قابل پرداخت است که شامل ۱ درصد کارمزد درگاه پرداخت می باشد.</li><li class="item">پس از ثبت‌نام و واریز وجه حداکثر تا ۲۴ ساعت به کانال مربوطه دعوت خواهید شد.</li><li class="item">وجه واریزی فقط برای ثبت نام در کلاس های آموزش از راه دور (تلگرامی)‌ است.</li><li class="item">هزینه ثبت‌نام قابل عودت نمیباشد.</li><li class="item">اگر تا ۲۴ ساعت پس از ثبت نام از طریق سایت به کانال مربوطه دعوت نشدید موضوع را به <a href="http://telegram.me/FrenchOnlineSupport">پشتیبان فنی</a> گزارش دهید. </li><li class="item">در صورت نیاز به تعیین سطح پیش از ثبت نام، ازطریق <a href="http://telegram.me/ftm515">این قسمت</a> با مدرس تماس حاصل نمایید. </li><li class="item">حقوق مولف و مدرس محفوظ است. از انتشار بدون مجوز مطالب خودداری نمایید. با فرد یا افراد خاطی برخورد قانونی صورت خواهد گرفت و در صورت اخراج،‌ فرد خاطی حق هیچ گونه اعتراضی نخواهد داشت.</li><br />با تشکر و آرزوی موفقیت</p>
+		</ol>
+		</div>
+		<input type="button" name="previous" class="previous action-button" value="مرحله قبل" />
+		<input type="button" name="next" class="next action-button" value="مرحله بعد" />
+	</fieldset>
+	<fieldset>
+		<h2 class="fs-title">ثبت مشخصات</h2>
+		<h3 class="fs-subtitle">لطفا مشخصات خود را به دقت وارد نمایید.</h3>
+			<p>نام و نام‌خانوادگی</p>
+			{{ form.name(class_="form-control", placeholder="مانند: محمد گلی") }}
+			<p>لطفا شماره‌ تماس خود را به صورت ۱۰ رقمی بدون صفر ابتدایی وارد نمایید.<br /> در وارد نمودن شماره دقت فرمایید. درس‌ها به این شماره ارسال خواهند شد .</p>
+			{{ form.phone(class_="form-control", placeholder="مانند: ۹۱۲۳۳۳۴۴۵۵") }}
+			{% if form.phone.errors %}
+			<span class="error">
+			{% for error in form.phone.errors %}
+			<script>
+				swal("caution", "لطفا شماره موبایل خود را به صورت 10 رقمی بدون 0 وارد کنید!", 'error')
+				</script>
+			{% endfor %}
+			</span>
+			{% endif %}
+			<p>ترم مورد نظر خود را انتخاب کنید.<br /> در صورت لزوم جهت تعیین سطح و انتخاب ترم از طریق <a href='http://telegram.me/ftm515'>این قسمت</a> با مدرس در ارتباط باشید.</p>
+			{{ form.term(class_="form-control price", onchange="priceList(this)") }}
+			<p class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i><a href="#" class="tooltiptext" >این هزینه شامل هزینه ثبت‌نام و ۱٪ کارمزد درگاه پرداخت می‌باشد.</a><i> </i>مبلغ قابل پرداخت <span id="price">۳۰۳۰۰</span> تومان</p>
+			
+			
+	        {% if form.license.errors %}
+
+			<span class="error">
+			{% for error in form.license.errors %}
+			<script>
+            swal("caution", "بدون پذیرفتن شرایط و ضوابط نمیتوانید ثبت نام کنید.", 'error')
+           </script>
+                          {% endfor %}
+                            </span>
+                           {% endif %}
+	
+                        </div>
+			<div>
+				
+
+			
+			</div>
+		<p>پس از ثبت اطلاعات به صفحه بانک هدایت خواهید شد. لطفا پس از پرداخت بر روی دکمه تکمیل خرید کلیک کنید. در غیر این صورت ثبت نام شما پایان نمی‌پذیرد.</p>
+		<input type="button" name="previous" class="previous action-button" value="مرحله قبلی" />
+		<button type="submit" class="submit action-button">ثبت‌اطلاعات و پرداخت</button>
+		
+	</fieldset>
+
+</form>
+
+<!-- jQuery -->
+<script src="http://thecodeplayer.com/uploads/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<!-- jQuery easing plugin -->
+<script src="http://thecodeplayer.com/uploads/js/jquery.easing.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	//jQuery time
+var current_fs, next_fs, previous_fs; //fieldsets
+var left, opacity, scale; //fieldset properties which we will animate
+var animating; //flag to prevent quick multi-click glitches
+
+$(".next").click(function(){
+	if(animating) return false;
+	animating = true;
+	
+	current_fs = $(this).parent();
+	next_fs = $(this).parent().next();
+	
+	//activate next step on progressbar using the index of next_fs
+	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+	
+	//show the next fieldset
+	next_fs.show(); 
+	//hide the current fieldset with style
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
+			//as the opacity of current_fs reduces to 0 - stored in "now"
+			//1. scale current_fs down to 80%
+			scale = 1 - (1 - now) * 0.2;
+			//2. bring next_fs from the right(50%)
+			left = (now * 50)+"%";
+			//3. increase opacity of next_fs to 1 as it moves in
+			opacity = 1 - now;
+			current_fs.css({'transform': 'scale('+scale+')'});
+			next_fs.css({'right': '-2.7em', 'opacity': opacity});
+		}, 
+		duration: 800, 
+		complete: function(){
+			current_fs.hide();
+			animating = false;
+		}, 
+		//this comes from the custom easing plugin
+		easing: 'easeInOutBack'
+	});
+});
+
+$(".previous").click(function(){
+	if(animating) return false;
+	animating = true;
+	
+	current_fs = $(this).parent();
+	previous_fs = $(this).parent().prev();
+	
+	//de-activate current step on progressbar
+	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+	
+	//show the previous fieldset
+	previous_fs.show(); 
+	//hide the current fieldset with style
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
+			//as the opacity of current_fs reduces to 0 - stored in "now"
+			//1. scale previous_fs from 80% to 100%
+			scale = 0.8 + (1 - now) * 0.2;
+			//2. take current_fs to the right(50%) - from 0%
+			left = ((1-now) * 50)+"%";
+			//3. increase opacity of previous_fs to 1 as it moves in
+			opacity = 1 - now;
+			current_fs.css({'right': '-2.7em'});
+			previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+		}, 
+		duration: 800, 
+		complete: function(){
+			current_fs.hide();
+			animating = false;
+		}, 
+		//this comes from the custom easing plugin
+		easing: 'easeInOutBack'
+	});
+});
+
+// $(".submit").click(function(){
+// 	return false;
+// })
+
+</script>
+<script>
+
+function priceList($this){
+			if ($this.value == 1 ){
+				$("#price").text("۳۰۳۰۰");
+			} else if ($this.value == 2 ){
+				$("#price").text("۳۰۳۰۰");
+			} else if ($this.value == 3 ){
+				$("#price").text("۳۵۳۵۰");
+			} else if ($this.value == 4){
+				$("#price").text("۳۵۳۵۰");
+			} else if ($this.value == 5){
+				$("#price").text("۴۰۴۰۰");
+			} else if ($this.value == 6){
+				$("#price").text("۳۵۳۵۰");
+			} else if ($this.value == 7 || $this.value == 8){
+				$("#price").text("۴۰۴۰۰");
+			}
+		};
+
+
+</script>
+<style type="text/css">
+	fieldset{
+		right: -2.7em;
+	}
+</style>
+
+</body>
+</html>

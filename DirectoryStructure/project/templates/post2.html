@@ -1,0 +1,33 @@
+{% extends "_base.html" %}
+{% block title %}blog FREnchOnline{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css') }}">
+{% endblock %}
+{% block content %}
+    <!-- End Top Bar -->
+
+    <div class="callout large primary">
+      <div class="row column text-center">
+        <h1>{{ post.title }}</h1>
+        <h2 class="subheader">{{ post.subtitle }}</h2>
+      </div>
+    </div>
+    <!-- We can now combine rows and columns when there's only one column in that row -->
+    <div class="row medium-8 large-8 columns">
+      <div class="blog-post">
+        <h3><small>{{ post.date }}</small></h3>
+        <img class="thumbnail" src="http://placehold.it/850x350">
+        <p>{{ post.body }}</p>
+        <div class="callout">
+          <ul class="menu simple">
+            <li><a href="#">Author: Mike Mikers</a></li>
+            <li><a href="#">Comments: 3</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+{% endblock %}
+
+    

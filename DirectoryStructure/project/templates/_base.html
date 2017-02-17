@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" dir="rtl">
+  <head>
+    {% block head %}
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/foundation.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+    {% endblock %}
+  </head>
+  <body>
+  <div class="off-canvas-wrapper">
+     
+    <!-- MOBILE NAVIGATION -->
+    
+     <div class="off-canvas position-right" id="offCanvas" data-off-canvas data-transition="overlap">
+      <ul class="MobileMenu">
+        <li><a href="#">خانه</a></li>
+        <li><a href="#">ورود</a></li>
+        <li><a href="#">ثبت نام</a></li>
+        <li><a href="#">بلاگ</a></li>
+      </ul>
+     </div>
+  
+
+
+    <div class="off-canvas-content" data-off-canvas-content>
+        <div class="title-bar show-for-small-only">
+            <div class="title-bar-right">
+            <button class="menu-icon" type="button" data-open="offCanvas"></button>
+            <span class="title-bar-title">فرنچ آنلاین</span>
+            </div>
+        </div>
+      <!-- Your page content lives here -->
+    <!-- NAVIGATION DESKTOP -->
+    <div data-sticky-container>
+      <nav class="top-bar nav-desktop" data-sticky data-options="marginTop:0;">
+        <div class="wrap">
+
+          <div class="top-bar-right">
+              <h4 class="menu-text">فرنچ آنلاین</h4>
+          </div>
+
+          <div class="top-bar-left">
+            <ul class="menu menu-desktop">
+              <li><a href="{{ url_for('homepage.main') }}">خانه</a></li>
+              <li><a href="{{ url_for('profiles.login') }}">ورود</a></li>
+              <li><a href="{{ url_for('registeration.register') }}">ثبت نام</a></li>
+              <li><a href="{{ url_for('blog.blog', pageNumber=1) }}">بلاگ</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+      </nav>
+    </div>
+      {% block content %}
+      {% endblock %}
+
+ 
+    <footer>
+      <div class="wrap row small-up-1 medium-up-3">
+        <div class="column">
+          <h4>اطلاعات تماس</h4>
+          <hr>
+          <a href="#"><span>Phone</span> +98 935 904 5545</a>
+          <a href="#"><span>Phone</span> +98 935 904 5545</a>
+          <a href="#"><span>Phone</span> +98 935 904 5545</a>
+        </div>
+
+        <div class="column">
+          <h4>نقشه سایت</h4>
+          <hr>
+          <a href="#"><span>Phone</span> +98 935 904 5545</a>
+          <a href="#"><span>Phone</span> +98 935 904 5545</a>
+          <a href="#"><span>Phone</span> +98 935 904 5545</a>
+        </div>
+
+        <div class="column">
+          <h4>شبکه های اجتماعی</h4>
+          <hr>
+          <a href="#"><span>Phone</span> +98 935 904 5545</a>
+          <a href="#"><span>Phone</span> +98 935 904 5545</a>
+          <a href="#"><span>Phone</span> +98 935 904 5545</a>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+</div>
+    <script src="{{ url_for('static', filename='js/vendor/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/what-input.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/foundation.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  </body>
+</html>

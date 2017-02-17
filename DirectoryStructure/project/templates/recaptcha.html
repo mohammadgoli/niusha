@@ -1,0 +1,13 @@
+<!--#{{ form.recaptcha() }}
+                           #   {% if form.recaptcha.errors %}
+				<span class="error">
+				#{% for error in form.recaptcha.errors %} -->
+
+
+				<script>
+				swal("caution", "لطفا 'من ربات نیستم' را تیک بزیند.", 'error')
+				</script>
+				{% endfor %}
+
+					</span>
+				{% endif %}
