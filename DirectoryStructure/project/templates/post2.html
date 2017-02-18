@@ -27,7 +27,9 @@
         </div>
       </div>
     </div>
-    
+    {% for comment in comments %}
+    {{ comment.comment }}
+    {% endfor %}
 {% endblock %}
 
     

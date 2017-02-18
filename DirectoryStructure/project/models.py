@@ -1,3 +1,4 @@
+# _*_ coding: utf-8 _*_
 from project import db
 
 import datetime 
@@ -57,7 +58,7 @@ class Post(db.Model):
 	date = db.Column(db.Integer, default=datetime.datetime.today().strftime('%d, %b, %Y'))
 	body = db.Column(db.String, nullable=False)
 	author = db.Column(db.String, nullable=False)
-	# comments = db.relationship('Comment', backref='post')
+	comments = db.relationship('Comment', backref='post')
 	views = db.Column(db.Integer, default=0)
 
 	def __init__(self, title, subtitle, cover_path, date, body, author, views):
@@ -74,13 +75,31 @@ class Post(db.Model):
 
 
 
-# class Comment(db.Model):
-#  	__tablename__ = 'comments'
+class Comment(db.Model):
+    __tablename__ = 'comments'
 
-#  	comment_id = db.Column(db.Integer, primary_key=True)
-#  	comment = db.Column(db.String, nullable=False)
-#  	phone_number = db.Column(db.)
+    comment_id = db.Column(db.Integer, primary_key=True)
+    comment = db.Column(db.String, nullable=False)
+    name = db.Column(db.String, nullable=False)
+    phone_number = db.Column(db.String)
+    profile_picture = db.Column(db.String, default='/sampleProfile.jpg')
+    date = db.Column(db.Integer, default=datetime.datetime.today().strftime('%d, %b, %Y'))
+    comment_verify = db.Column(db.Boolean, default=False)
+    comment_reply = db.Column(db.String)
+    Post_ID = db.Column(db.Integer, db.ForeignKey('blog_posts.post_id'))
+    
+    def __init__(self, comment, name, phone_number, profile_picture, comment_verify, date, comment_reply, Post_ID):
+        self.comment = comment
+        self.name = name
+        self.phone_number = phone_number
+        self.profile_picture = profile_picture
+        self.date = date
+        self.comment_verify = comment_verify
+        self.comment_reply = comment_reply
+        self.Post_ID = Post_ID
 
+    def __repr__(self):
+        return '{0}'.format(self.comment_id)
 
 
 

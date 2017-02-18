@@ -7,7 +7,7 @@ from sqlalchemy.exc import IntegrityError
 
 #from .forms import $$
 from project import db
-from project.models import User, Post
+from project.models import User, Post, Comment
 
 #helper functions 
 def blog_post_finder(postTitle):
@@ -25,6 +25,9 @@ def posts(pageNumber):
     start = ((pageNumber-1)*5) + 1
     end = (pageNumber*5) + 1
     return db.session.query(Post).order_by(Post.date.asc())[start:end]
+
+def comment_search(searchID):
+    return db.session.query(Comment).order_by(Comment.date.asc()).filter_by(Post_ID=searchID)
 
 #This bluePrint includes user registration and users profile system 
 blog_blueprint = Blueprint('blog', __name__)
@@ -60,5 +63,8 @@ def blog_post(postTitle):
     post = postTitle.split("_")
     postTitle = " ".join(post)
     post = blog_post_finder(postTitle)
-    # return post
-    return render_template('post2.html', post=post)
+    comment_id_to_search = post.post_id
+    comments = comment_search(comment_id_to_search)
+    for i in comments:
+        print i.comment
+    return render_template('post2.html', post=post, comments=comments)
