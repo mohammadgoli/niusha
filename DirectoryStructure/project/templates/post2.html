@@ -20,16 +20,22 @@
         <img class="thumbnail" src="http://placehold.it/850x350">
         <p>{{ post.body }}</p>
         <div class="callout">
-          <ul class="menu simple">
-            <li><a href="#">Author: Mike Mikers</a></li>
+          <ul class="menu simple subpost">
+            <li><a href="#">نویسنده: {{ post.author }}</a></li>
             <li><a href="#">Comments: 3</a></li>
+            <li><a href="#">تعداد بازدید: {{ post.views }}</a></li>
           </ul>
         </div>
       </div>
     </div>
-    {% for comment in comments %}
-    {{ comment.comment }}
-    {% endfor %}
+
+    <div class="comment_section row medium-8 large-8 columns">
+      {% for comment in comments %}
+      {{ comment.name }}
+      {{ comment.date }}
+      {{ comment.comment }}
+      {% endfor %}
+    </div>
 {% endblock %}
 
     

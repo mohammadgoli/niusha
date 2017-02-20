@@ -28,16 +28,16 @@ def login_required(test):
 @profiles_blueprint.route('/profile')
 @login_required
 def profile():
-	return "this is a your profile <a>test</a>"
+    return render_template('profile.html')
 
 @profiles_blueprint.route('/login')
 def login():
     session["logged_in"]=True
-    return "you logged in "
+    return redirect(url_for('blog.blog', pageNumber=1))
 
 @profiles_blueprint.route('/logout')
 @login_required
 def logout():
     session.pop("logged_in", None)
-    return "you logged out"
+    return redirect(url_for('blog.blog', pageNumber=1))
 

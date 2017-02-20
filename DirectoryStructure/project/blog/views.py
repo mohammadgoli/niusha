@@ -5,7 +5,7 @@ from flask import flash, redirect, render_template, \
 from sqlalchemy.exc import IntegrityError 
 
 
-#from .forms import $$
+# from .forms import LoginForm
 from project import db
 from project.models import User, Post, Comment
 
@@ -60,7 +60,7 @@ def blog(pageNumber):
 
 @blog_blueprint.route('/blog/post/<postTitle>')
 def blog_post(postTitle):
-    post = postTitle.split("_")
+    post = postTitle.split("-")
     postTitle = " ".join(post)
     post = blog_post_finder(postTitle)
     comment_id_to_search = post.post_id
