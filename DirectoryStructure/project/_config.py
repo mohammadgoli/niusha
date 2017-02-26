@@ -27,3 +27,8 @@ RECAPTCHA_PARAMETERS = {'hl': 'fa'}
 
 # payment 
 
+
+#upload
+
+UPLOAD_FOLDER = 'uploads/'
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])

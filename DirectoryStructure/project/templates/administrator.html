@@ -1,0 +1,17 @@
+{% extends "_base.html" %}
+{% block title %}blog FREnchOnline{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css') }}">
+{% endblock %}
+{% block content %}
+<div class="wrap">
+	<form action="{{ url_for('admin.admin_redirect')}}" method="POST">
+		      {{ form.csrf_token }}
+	<p>نام کاربری</p>	{{form.username}}
+
+	<p>pass</p> {{ form.password}}
+	  <input type="submit" value="Submit">
+	</form>
+</div>
+{% endblock %}

@@ -103,6 +103,38 @@ class Comment(db.Model):
 
 
 
+class Song(db.Model):
+
+    __tablename__ = "songs"
+
+    song_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    path = db.Column(db.String, nullable=False)
+    cover = db.Column(db.String, default="/sampleCover.jpg")
+    date = db.Column(db.Integer, default=datetime.datetime.today().strftime('%d, %b, %Y'))
+    download_counter = db.Column(db.Integer, default=0)
+    likes = db.Column(db.Integer, default=0)
+    dislikes = db.Column(db.Integer, default=0)
+    lyrics = db.Column(db.String)
+    translated_lyrics = db.Column(db.String)
+
+    def __init__(self, name, path, cover, date, download_counter, likes, dislikes, lyrics, translated_lyrics):
+        self.name = name
+        self.path = path 
+        self.cover = cover 
+        self.date = date 
+        self.download_counter = download_counter
+        self.likes = likes
+        self.dislikes = dislikes
+        self.lyrics = lyrics
+        self.translated_lyrics = translated_lyrics
+
+    def __repr__(self):
+        return "{}".format(self.name)
+
+
+# 	def __repr__(self):
+# 		return ''.format(self.)
 
 # class files(db.Model):
 # 	__tablename__ = uploads
